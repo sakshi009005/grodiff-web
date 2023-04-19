@@ -3,12 +3,17 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 
+import {HttpClientModule} from '@angular/common/http';
+import { GrodiffHeaderComponent } from './grodiff-header/grodiff-header.component';
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    GrodiffHeaderComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
