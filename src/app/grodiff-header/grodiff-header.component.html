@@ -1,7 +1,23 @@
-<div class="header">
-
-<div>
-    <img src="assets/img/logo.png">
+<nav class="navbar navbar-expand-lg header">
+    <div class="container-fluid">
+    <div class="row g-0 w-100">
+      <a class="navbar-brand text-center col-lg-2 col-md-12 pe-0 me-0">
+        <img src="assets/img/logo.png" class="rounded-pill logo-width"> 
+      </a>
+      <div class="col-lg-1 col-sm-6 d-flex align-items-center" style="width: 2% ;padding-right: 2%;">
+        <img class="location" src="assets/img/location.png"></div>
+      <div class="col-lg-1  col-sm-6 d-flex  align-items-center text-white">{{city}} {{zipCode}}</div>
+      <div class="col-lg-6">
+      <form class="d-flex mt-5">
+        <input class="form-control shadow-none" type="text" placeholder="Search">
+        <button class="btn btn-primary" type="button">Search</button>
+      </form>
+    </div>
+    <div class="col-lg-2 text-center my-auto">
+    <button class="btn btn-default" style="background-color: #efe6e8!important;">
+        <img src="assets/img/cart.png" width="20" /> compare carts
+   </button>
 </div>
-
+    </div>    
 </div>
+  </nav>

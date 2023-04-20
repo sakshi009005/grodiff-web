@@ -5,11 +5,13 @@ import { AppComponent } from './app.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { GrodiffHeaderComponent } from './grodiff-header/grodiff-header.component';
+import { GrodiffTabularGridComponent } from './grodiff-tabular-grid/grodiff-tabular-grid.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GrodiffHeaderComponent
+    GrodiffHeaderComponent,
+    GrodiffTabularGridComponent
   ],
   imports: [
     BrowserModule,

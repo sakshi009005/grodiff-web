@@ -6,9 +6,8 @@ import { HttpClient  } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit  {
-  title = 'grodiff';
-  res: any;
+export class AppComponent implements OnInit  {  
+  location: any;
   geolocation_api_key = '5635cff196fd4af8b34bd2267c811b20';
   google_api_key='AIzaSyCFH0VkNCniE_kimzkH2Zls_udbY-lbWL8';
 
@@ -22,12 +21,10 @@ export class AppComponent implements OnInit  {
 
   getGeolocationData()
   {
-    this.http.get(this.url).subscribe((res:any)=>{
-    this.res=res;
-      console.log('response is ='+res)
-
+    this.http.get(this.url).subscribe((response:any)=>{
+      console.log(response);
+    this.location=response;
     });
-
   }
 
 
