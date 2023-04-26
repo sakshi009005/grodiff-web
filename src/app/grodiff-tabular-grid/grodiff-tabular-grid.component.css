@@ -1,0 +1,31 @@
+.tabular-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+  
+.imgContainer {
+    width: 100px;
+    height: 200px;
+    overflow: hidden;
+    margin-left: auto;
+    margin-right: auto;
+}
+  
+.imgContainer img {
+    width: 100%;
+    min-height: 100%;
+}
+
+.addButton{
+    margin-bottom: auto;
+    margin-top: auto;
+    padding-left: 30%;
+}
+
+.btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: cadetblue;
+    border-color: var(--bs-btn-hover-border-color);
+}
+

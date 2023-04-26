@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h2 class="heading">Big basket</h2>
+            <div style="    top: 63%;
+            left: 15%;
+            position: absolute;"
+                [ngClass]="{'spinner-border text-success': !isBigBasketProductsLoaded && searchItem.length !=0}"></div>
+            <div class="pb-2 px-5" *ngFor="let products of bigBasketProducts.products">
+                <app-grodiff-tabular-grid [product]="products"></app-grodiff-tabular-grid>
+            </div>
+        </div>
+        <div class="col">
+            <h2 class="heading">Blink it</h2>
+            <div style="    top: 63%;
+            left: 50%;
+            position: absolute;"
+                [ngClass]="{'spinner-border text-success': !isBlinkItProductsLoaded && searchItem.length !=0}"></div>
+            <div class="pb-2 px-5" *ngFor="let products of blinkItProducts.products">
+                <app-grodiff-tabular-grid [product]="products"></app-grodiff-tabular-grid>
+            </div>
+        </div>
+        <div class="col">
+            <h2 class="heading">Zepto</h2>
+            <div style="    top: 63%;
+            left: 83%;
+            position: absolute;"
+                [ngClass]="{'spinner-border text-success':!isZeptoProductsLoaded && searchItem.length !=0}"></div>
+            <div class="pb-2 px-5" *ngFor="let products of zeptoProducts.products">
+                <app-grodiff-tabular-grid [product]="products"></app-grodiff-tabular-grid>
+            </div>
+        </div>
+    </div>
+
+
+</div>

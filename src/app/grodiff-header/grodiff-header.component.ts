@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { SharedService } from '../shared.service';
 
 @Component({
   selector: 'app-grodiff-header',
@@ -7,9 +8,13 @@ import { Component, Input } from '@angular/core';
 })
 export class GrodiffHeaderComponent {
 
-  @Input() city='';
-  @Input() zipCode='';
+  constructor(private sharedService: SharedService) { }
 
-  
+  @Input() city = '';
+  @Input() zipCode = '';
+  searchText: string = '';
 
+  public performSearch() {
+    this.sharedService.setSearchItem(this.searchText);
+  }
 }

@@ -1,27 +1,29 @@
-<table class="table align-middle">
-    <thead>
-        <tr>
-          <th>First</th>
-          <th>Second</th>
-          <th>Third</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>John</td>
-          <td>Doe</td>
-          <td>john@example.com</td>
-        </tr>
-        <tr>
-          <td>Mary</td>
-          <td>Moe</td>
-          <td>mary@example.com</td>
-        </tr>
-        <tr>
-          <td>July</td>
-          <td>Dooley</td>
-          <td>july@example.com</td>
-        </tr>
-      </tbody>
-</table>
+<div class="border rounded">
+  <div class="imgContainer"><img src="{{product.imageUrl}}" class="img-fluid border-0"></div><br>
+  <div class="ps-1">
+    <div class="fw-bold" style="height: 48px;">{{product.name}}</div>
+    <div class="row container-fluid pb-2">
+      <div class="col-6 ps-0">
+        <div *ngIf="$any(product?.variants)?.length > 1" class="dropdown">
+          <button class="btn btn-default dropdown-toggle ps-0" type="button" data-bs-toggle="dropdown">{{variantPrice |
+            currency:'INR'}} <span class="opacity-75">{{variantWeight}}</span>
+          </button>
+          <ul class="dropdown-menu">
+            <li *ngFor="let variant of product?.variants" (click)="getSelectedValue(variant)"><a
+                class="dropdown-item">{{variant.price |
+                currency:'INR'}} <span class="opacity-75">{{variant.weight}}</span></a>
+            </li>
+          </ul>
+        </div>
+        <span *ngIf="$any(product?.variants)?.length <=1" class="opacity-75 pt-2 ps-1"
+          style="height: 37.6px; display: block;">{{product.weight}}</span>
 
+        <span *ngIf="$any(product?.variants)?.length>1; else singleValue">{{variantPrice| currency:'INR'}}</span>
+        <ng-template #singleValue><span>{{product.price | currency:'INR'}}</span></ng-template>
+      </div>
+      <span class="col-6 addButton"> <button type="button" class="btn btn-outline-success" (click)="addSelectedItem()">
+          <span>{{addItem ? 'Add' : 'Remove'}}</span></button></span>
+
+    </div>
+  </div>
+</div>
