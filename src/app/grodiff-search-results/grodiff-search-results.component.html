@@ -6,8 +6,12 @@
             left: 15%;
             position: absolute;"
                 [ngClass]="{'spinner-border text-success': !isBigBasketProductsLoaded && searchItem.length !=0}"></div>
+            <div *ngIf="bigBasketErrorMsg" class="alert alert-danger">
+                <strong>Error!</strong> {{bigBasketErrorMsg}}
+            </div>
             <div class="pb-2 px-5" *ngFor="let products of bigBasketProducts.products">
-                <app-grodiff-tabular-grid [product]="products"></app-grodiff-tabular-grid>
+                <app-grodiff-tabular-grid [removedCartProduct]="removedCartProduct"
+                    [product]="products"></app-grodiff-tabular-grid>
             </div>
         </div>
         <div class="col">
@@ -16,8 +20,12 @@
             left: 50%;
             position: absolute;"
                 [ngClass]="{'spinner-border text-success': !isBlinkItProductsLoaded && searchItem.length !=0}"></div>
+            <div *ngIf="blinkItErrorMsg" class="alert alert-danger">
+                <strong>Error!</strong> {{blinkItErrorMsg}}
+            </div>
             <div class="pb-2 px-5" *ngFor="let products of blinkItProducts.products">
-                <app-grodiff-tabular-grid [product]="products"></app-grodiff-tabular-grid>
+                <app-grodiff-tabular-grid [removedCartProduct]="removedCartProduct"
+                    [product]="products"></app-grodiff-tabular-grid>
             </div>
         </div>
         <div class="col">
@@ -26,8 +34,12 @@
             left: 83%;
             position: absolute;"
                 [ngClass]="{'spinner-border text-success':!isZeptoProductsLoaded && searchItem.length !=0}"></div>
+            <div *ngIf="zeptoErrorMsg" class="alert alert-danger">
+                <strong>Error!</strong> {{zeptoErrorMsg}}
+            </div>
             <div class="pb-2 px-5" *ngFor="let products of zeptoProducts.products">
-                <app-grodiff-tabular-grid [product]="products"></app-grodiff-tabular-grid>
+                <app-grodiff-tabular-grid [removedCartProduct]="removedCartProduct"
+                    [product]="products"></app-grodiff-tabular-grid>
             </div>
         </div>
     </div>

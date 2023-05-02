@@ -1,0 +1,48 @@
+<div class="offcanvas-body" id="offcanvasCart">
+    <div class="container-fluid">
+        <div class="emptyCart border rounded"
+            *ngIf="blinkItCart?.length==0 && bigBasketCart?.length==0 && zeptoCart?.length==0; else cartItems">
+            <div class="imgContainer w-50 mx-auto"><img src="assets/img/emp_empty_cart.webp" class="img-fluid border-0">
+                <span class="fw-bold">You don't have any items in your cart</span>
+                <button class="btn btn-success text-light my-2" type="button" style="background-color: cadetblue;"
+                ><span data-bs-dismiss="offcanvas" >Start Shopping</span></button>
+            </div>
+        </div>
+
+        <ng-template #cartItems>
+            <div>
+                <div class="row">
+                    <div class="col">
+                        <h2 class="heading ps-5">Big basket</h2>
+                        <div class="pb-2 px-0" *ngFor="let products of bigBasketCart">
+                            <app-grodiff-tabular-grid [isComareCartView]=true
+                                [product]="products"></app-grodiff-tabular-grid>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h2 class="heading ps-5">Blink it</h2>
+                        <div class="pb-2 px-0" *ngFor="let products of blinkItCart">
+                            <app-grodiff-tabular-grid [isComareCartView]=true
+                                [product]="products"></app-grodiff-tabular-grid>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <h2 class="heading ps-5">Zepto</h2>
+                        <div class="pb-2 px-0" *ngFor="let products of zeptoCart">
+                            <app-grodiff-tabular-grid [isComareCartView]=true
+                                [product]="products"></app-grodiff-tabular-grid>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <span class="col text-center"><span *ngIf="bigBasketTotal" class="badge bg-success">{{bigBasketTotal
+                            |
+                            currency:'INR'}}</span></span>
+                    <span class="col text-center"><span *ngIf="blinkItTotal" class="badge bg-success">{{blinkItTotal |
+                            currency:'INR'}}</span></span>
+                    <span class="col text-center"><span *ngIf="zeptoTotal" class="badge bg-success">{{zeptoTotal |
+                            currency:'INR'}}</span></span>
+                </div>
+            </div>
+        </ng-template>
+    </div>

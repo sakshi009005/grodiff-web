@@ -1,1 +1,10 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.modal-backdrop.show {
+    opacity: 0!important;
+}
+
+.modal-backdrop {
+--bs-backdrop-zindex: 0;
+   
+}

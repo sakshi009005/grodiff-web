@@ -8,20 +8,23 @@ import { GrodiffHeaderComponent } from './grodiff-header/grodiff-header.componen
 import { GrodiffTabularGridComponent } from './grodiff-tabular-grid/grodiff-tabular-grid.component';
 import { GrodiffSearchResultsComponent } from './grodiff-search-results/grodiff-search-results.component';
 import { FormsModule } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { GrodiffCompareCartComponent } from './grodiff-compare-cart/grodiff-compare-cart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     GrodiffHeaderComponent,
     GrodiffTabularGridComponent,
-    GrodiffSearchResultsComponent
+    GrodiffSearchResultsComponent,
+    GrodiffCompareCartComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

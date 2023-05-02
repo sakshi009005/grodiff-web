@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Product, Products } from '../Products';
+import { Component, Input, OnInit, SimpleChanges, } from '@angular/core';
+import { Product } from '../Products';
 import { SharedService } from '../shared.service';
 
 @Component({
@@ -19,7 +19,14 @@ export class GrodiffTabularGridComponent implements OnInit {
     variants: []
   };
 
+  @Input()
+  removedCartProduct:any={};
+
   addItem: boolean = true;
+
+  @Input()
+  isComareCartView: boolean = false;
+
 
   variantPrice: string = '';
   variantWeight: string = '';
@@ -31,23 +38,27 @@ export class GrodiffTabularGridComponent implements OnInit {
   constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
-    this.variantPrice = this.product?.variants[0]?.price;
-    this.variantWeight = this.product?.variants[0]?.weight;
+    this.variantPrice = this.product?.variants ? this.product?.variants[0]?.price : '';
+    this.variantWeight = this.product?.variants ? this.product?.variants[0]?.weight : '';
     this.updateToggle();
   }
 
+  ngOnChanges(changes: SimpleChanges) {
+    this.updateToggle();
+}
+
   updateToggle() {
     if (this.product?.productSource == "BIG_BASKET") {
-      this.sharedService.bigBasketCart.forEach(p => {
+      this.sharedService.getBigBasketCartFromCookie().forEach(p => {
         if (p?.productId == this.product?.productId) {
           this.addItem = false;
           return;
-        }
+        }        
       })
     }
 
     if (this.product?.productSource == "BLINK_IT") {
-      this.sharedService.blinkItCart.forEach(p => {
+      this.sharedService.getBlinkItCartFromCookie().forEach(p => {
         if (p?.productId == this.product?.productId) {
           this.addItem = false;
           return;
@@ -56,12 +67,20 @@ export class GrodiffTabularGridComponent implements OnInit {
     }
 
     if (this.product?.productSource == "ZEPTO") {
-      this.sharedService.zeptoCart.forEach(p => {
+      this.sharedService.getZeptoCartFromCookie().forEach(p => {
         if (p?.productId == this.product?.productId) {
           this.addItem = false;
           return;
         }
       })
+    }
+    
+    this.refreshBtn();
+  }
+
+  private refreshBtn() {
+    if (this.removedCartProduct?.productId == this.product?.productId) {
+      this.addItem = true;
     }
   }
 
@@ -85,7 +104,13 @@ export class GrodiffTabularGridComponent implements OnInit {
       this.sharedService.addProductToCart(product);
     } else {
       this.sharedService.removeProductFromCart(product);
+      this.removedFromCart(product);
     }
+  }
 
+  removedFromCart(product:Product) {
+   if(this.isComareCartView){
+    this.sharedService.setIsRemovedFromCartObservable(product);
+   }
   }
 }

@@ -1,5 +1,9 @@
-.heading{
+.heading {
     text-align: center;
     font-family: cursive;
     color: cadetblue;
+}
+
+.alert-danger {
+    --bs-alert-bg: none;
 }

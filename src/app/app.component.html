@@ -1,5 +1,7 @@
-<app-grodiff-header [city]="location.city"
-    [zipCode]="location.postal_code"></app-grodiff-header>
-<div style="background-color: honeydew;">
+<app-grodiff-header [city]="location.city" [zipCode]="location.postal_code"></app-grodiff-header>
+<div style="padding-top: 10%;">
     <app-grodiff-search-results></app-grodiff-search-results>
+</div>
+<div class="offcanvas offcanvas-end p-2 w-50 offcanvas-bg"  [ngClass]="{'offcanvas-width':isCartEmpty}" style="overflow: auto;" id="offcanvasCart">
+    <app-grodiff-compare-cart></app-grodiff-compare-cart>
 </div>

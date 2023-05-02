@@ -29,3 +29,7 @@
     border-color: var(--bs-btn-hover-border-color);
 }
 
+.removeBtn {
+    padding-left: 15%;
+}
+
